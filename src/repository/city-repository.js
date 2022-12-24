@@ -4,7 +4,7 @@ class CityRepository {
 
     // this func expect a object as parameter, 
     // in JS we can pass the properties of the object that we need, using {}
-    async createCity ({name}) {
+    async createCity({name}) {
         try{
             const city = await City.create({name});
             return city;
