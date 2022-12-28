@@ -36,6 +36,16 @@ class CityRepository {
         }
     }
 
+    async getAllCities() {
+        try {
+            const cities = await City.findAll();
+            return cities;
+        } catch (error) {
+            console.log("something went wrong in repository layer!");
+            throw {error};
+        }
+    }
+
     async updateCity(cityID, data) {
         try {
             // to Just update the city, bellow approach is fine:
