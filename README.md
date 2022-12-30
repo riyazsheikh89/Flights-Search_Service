@@ -1,6 +1,6 @@
 # Welcome to Flights Service
 
-## project Setup
+## Project Setup
 - clone the project on your local
 - Execute `npm install` on the same path as of your root directory of teh downloaded project
 - Create a `.envs` file in the root directory and add the following environment variable
@@ -22,27 +22,52 @@
 
 
 ## DB Design
+- City Table
+- Airport Table
 - Airplane Table
-- Flight
-- Airport
-- City
+- Flight Table
 
-- A flight belongs to an airplane but one airplane can be used in multiple flights
-- A city has many airports but one airport belongs to a city
-- One airport can have many flights, but a flight belongs to one airport
+A flight belongs to an airplane but one airplane can be used in multiple flights.
+A city has many airports but one airport belongs to a city.
+One airport can have many flights, but a flight belongs to one airport.
 
 
 ## Tables
 
 ### City
-#### Attributes: id, name, created_at, updated_at
+- Attributes: id, name, created_at, updated_at
+- Create model for City:
 ```
-command: npx sequelize model:generate --name City --attributes name:String
+npx sequelize model:generate --name City --attributes name:String
 ```
 
 ### Airport
-#### Attributes: id, name, address, city_id, created_at, updated_at
-Relationship - City has many airport, but one airport belongs to one city (one to many)
+- Attributes: id, name, address, city_id, created_at, updated_at
+- Relationship - City has many airport, but one airport belongs to one city (one to many)
+- Create model for Airport:
 ```
-command: npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+```
+- Create Seeder:
+```
+npx sequelize seed:generate --name add-airports
+```
+- Seed all files:
+```
+npx sequelize db:seed:all
+```
+
+### Airplane
+- Attributes: modelNumber, capacity, created_at, updated_at
+- Create model for Airplane:
+```
+npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:integer
+```
+- Create Seeder:
+```
+npx sequelize seed:generate --name add-airplanes
+```
+- Seed all files:
+```
+npx sequelize db:seed:all
 ```
